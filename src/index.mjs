@@ -8,7 +8,7 @@ import formatDate from './utils.mjs';
 import { libList, links, nodeJsList, nodeLinks } from './data.mjs';
 import { Mutex } from 'async-mutex';
 
-const url = `https://api.telegram.org/bot${process.env.TG_TOKEN}/setWebhook?url=https://shy-red-yak.cyclic.cloud`;
+// const url = `https://api.telegram.org/bot6034531738:AAFPO6VJ2VWHdengikmUc4Fh2wVtsM9iStk/setWebhook?url=https://shy-red-yak.cyclic.cloud`;
 
 const mutex = new Mutex();
 const bot = new TelegramBot('6034531738:AAFPO6VJ2VWHdengikmUc4Fh2wVtsM9iStk', {
@@ -19,7 +19,6 @@ const app = express();
 const start = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
-    await fetch(url).then(() => console.log('set active'));
   } catch (err) {
     console.log(`${err} Error when server start`);
     process.exit(1);
