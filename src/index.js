@@ -9,7 +9,7 @@ import { libList, links, nodeJsList, nodeLinks } from './data.js';
 import { Mutex } from 'async-mutex';
 
 const mutex = new Mutex();
-const bot = new TelegramBot(process.env.TG_TOKEN, {
+const bot = new TelegramBot('6034531738:AAFPO6VJ2VWHdengikmUc4Fh2wVtsM9iStk', {
   polling: {
     interval: 500,
     autoStart: true,
@@ -24,12 +24,15 @@ mongoose.set('strictQuery', true);
 
 const start = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URL, {
+    mongoose.connect(process.env.MONGO_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
+    app.listen(process.env.PORT || 5005, () => {
+      console.log(`Bot start on port ${process.env.PORT}`);
+    });
   } catch (err) {
-    console.log(`${e} Error when server start`);
+    console.log(`${err} Error when server start`);
   }
 
   await bot.setMyCommands([
@@ -55,11 +58,7 @@ const start = async () => {
     },
   ]);
 };
-start().then(() => {
-  app.listen(process.env.PORT || 5005, () => {
-    console.log(`Bot start on port ${process.env.PORT}`);
-  });
-});
+start();
 
 bot.on('message', async (msg) => {
   const text = msg.text;
