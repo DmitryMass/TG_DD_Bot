@@ -20,8 +20,6 @@ const bot = new TelegramBot('6034531738:AAFPO6VJ2VWHdengikmUc4Fh2wVtsM9iStk', {
 });
 
 const app = express();
-// mongoose.set('strictQuery', true);
-
 const start = async () => {
   try {
     mongoose.connect(process.env.MONGO_URL);
