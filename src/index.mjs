@@ -3,9 +3,9 @@ dotenv.config();
 import express from 'express';
 import mongoose from 'mongoose';
 import TelegramBot from 'node-telegram-bot-api';
-import User from './models/User.js';
-import formatDate from './utils.js';
-import { libList, links, nodeJsList, nodeLinks } from './data.js';
+import User from './models/User.mjs';
+import formatDate from './utils.mjs';
+import { libList, links, nodeJsList, nodeLinks } from './data.mjs';
 import { Mutex } from 'async-mutex';
 
 const mutex = new Mutex();

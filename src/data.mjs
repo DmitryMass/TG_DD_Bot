@@ -7,8 +7,8 @@ import {
   router,
   forms,
   ui,
-} from './linksData.js';
-import { authorization, dataBase, frameLib } from './nodeJsLinks.js';
+} from './linksData.mjs';
+import { authorization, dataBase, frameLib } from './nodeJsLinks.mjs';
 
 export const libList = [
   [
