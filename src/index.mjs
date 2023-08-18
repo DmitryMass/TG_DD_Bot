@@ -247,6 +247,10 @@ bot.on('callback_query', async (query) => {
   }
 });
 
+app.all('*', (req, res) => {
+  res.json({ 'every thing': 'is awesome' });
+});
+
 start().then(() => {
   app.listen(process.env.PORT || 5005, () => {
     console.log(`Bot start on port ${process.env.PORT}`);
