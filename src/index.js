@@ -249,7 +249,7 @@ bot.on('callback_query', async (query) => {
   }
 });
 
-app.route('/', (req, res) => {
+app.get('/', (req, res) => {
   return res.status(200).send('OKEY BROTHER');
 });
 
