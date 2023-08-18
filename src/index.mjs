@@ -17,6 +17,7 @@ const bot = new TelegramBot(process.env.TG_TOKEN, {
       timeout: 10,
     },
   },
+  webHook: false,
 });
 
 const app = express();
