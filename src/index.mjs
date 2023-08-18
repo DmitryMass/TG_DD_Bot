@@ -23,6 +23,9 @@ const app = express();
 const start = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URL);
+    await fetch(
+      'https://api.telegram.org/bot6034531738:AAFPO6VJ2VWHdengikmUc4Fh2wVtsM9iStk/setWebhook?url=https://shy-red-yak.cyclic.cloud'
+    );
   } catch (err) {
     console.log(`${err} Error when server start`);
     process.exit(1);
