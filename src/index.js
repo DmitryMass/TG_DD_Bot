@@ -24,12 +24,9 @@ mongoose.set('strictQuery', true);
 
 const start = async () => {
   try {
-    mongoose.connect(process.env.MONGO_URL, {
+    await mongoose.connect(process.env.MONGO_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-    });
-    app.listen(process.env.PORT || 5005, () => {
-      console.log(`Bot start on port ${process.env.PORT}`);
     });
   } catch (err) {
     console.log(`${e} Error when server start`);
@@ -58,7 +55,11 @@ const start = async () => {
     },
   ]);
 };
-start();
+start().then(() => {
+  app.listen(process.env.PORT || 5005, () => {
+    console.log(`Bot start on port ${process.env.PORT}`);
+  });
+});
 
 bot.on('message', async (msg) => {
   const text = msg.text;
