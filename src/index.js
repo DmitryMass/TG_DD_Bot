@@ -55,11 +55,6 @@ const start = async () => {
     },
   ]);
 };
-start().then(() => {
-  app.listen(process.env.PORT || 5005, () => {
-    console.log(`Bot start on port ${process.env.PORT}`);
-  });
-});
 
 bot.on('message', async (msg) => {
   const text = msg.text;
@@ -254,4 +249,10 @@ bot.on('callback_query', async (query) => {
       },
     });
   }
+});
+
+start().then(() => {
+  app.listen(process.env.PORT || 5005, () => {
+    console.log(`Bot start on port ${process.env.PORT}`);
+  });
 });
