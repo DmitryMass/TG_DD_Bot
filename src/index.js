@@ -10,13 +10,7 @@ import { Mutex } from 'async-mutex';
 
 const mutex = new Mutex();
 const bot = new TelegramBot('6034531738:AAFPO6VJ2VWHdengikmUc4Fh2wVtsM9iStk', {
-  polling: {
-    interval: 500,
-    autoStart: true,
-    params: {
-      timeout: 10,
-    },
-  },
+  polling: true,
 });
 
 const app = express();
