@@ -20,16 +20,14 @@ const bot = new TelegramBot('6034531738:AAFPO6VJ2VWHdengikmUc4Fh2wVtsM9iStk', {
 });
 
 const app = express();
-mongoose.set('strictQuery', true);
+// mongoose.set('strictQuery', true);
 
 const start = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    mongoose.connect(process.env.MONGO_URL);
   } catch (err) {
     console.log(`${err} Error when server start`);
+    process.exit(1);
   }
 
   await bot.setMyCommands([
@@ -249,6 +247,10 @@ bot.on('callback_query', async (query) => {
       },
     });
   }
+});
+
+app.route('/', (req, res) => {
+  return res.status(200).send('OKEY BROTHER');
 });
 
 start().then(() => {
