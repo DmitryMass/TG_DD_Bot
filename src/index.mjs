@@ -8,11 +8,15 @@ import formatDate from './utils.mjs';
 import { libList, links, nodeJsList, nodeLinks } from './data.mjs';
 import { Mutex } from 'async-mutex';
 
-// const url = `https://api.telegram.org/bot6034531738:AAFPO6VJ2VWHdengikmUc4Fh2wVtsM9iStk/setWebhook?url=https://shy-red-yak.cyclic.cloud`;
-
 const mutex = new Mutex();
-const bot = new TelegramBot('6034531738:AAFPO6VJ2VWHdengikmUc4Fh2wVtsM9iStk', {
-  polling: true,
+const bot = new TelegramBot(process.env.TG_TOKEN, {
+  polling: {
+    interval: 500,
+    autoStart: true,
+    params: {
+      timeout: 10,
+    },
+  },
 });
 
 const app = express();
@@ -241,10 +245,6 @@ bot.on('callback_query', async (query) => {
       },
     });
   }
-});
-
-app.get('/', (req, res) => {
-  return res.status(200).send('OKEY BROTHER');
 });
 
 start().then(() => {
