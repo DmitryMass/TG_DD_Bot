@@ -2,12 +2,12 @@
   "name": "dev_docs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.mjs",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js",
-    "nodemon": "nodemon src/index.js"
+    "start": "node src/index.mjs",
+    "nodemon": "nodemon src/index.mjs"
   },
   "keywords": [],
   "author": "",
